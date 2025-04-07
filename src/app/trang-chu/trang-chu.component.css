@@ -1,4 +1,49 @@
 /* CSS cơ bản, bạn có thể tùy chỉnh thêm */
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.banner-slider img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.banner-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  transform: translateY(-50%);
+}
+
+.banner-controls button {
+  background: rgba(0, 0, 0, 0.5);
+  color: #f0f0f0;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.banner-controls button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.banner-slider img:not(.active) {
+  display: none;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
