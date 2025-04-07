@@ -1,0 +1,39 @@
+.styled-header {
+  background-color: #f8f8f8; /* Màu nền nhạt */
+  padding: 1rem 2rem; /* Khoảng cách lề */
+  display: flex; /* Sử dụng flexbox để căn chỉnh */
+  justify-content: space-between; /* Căn chỉnh logo và navigation */
+  align-items: center; /* Căn chỉnh theo chiều dọc */
+  border-bottom: 1px solid #eee; /* Đường kẻ dưới */
+}
+
+.logo {
+  font-size: 1.5rem; /* Kích thước font logo */
+  font-weight: bold; /* In đậm */
+  color: #333; /* Màu chữ logo */
+}
+
+.main-nav {
+  display: flex; /* Sử dụng flexbox cho navigation */
+}
+
+.nav-link {
+  text-decoration: none; /* Loại bỏ gạch chân */
+  color: #555; /* Màu chữ link */
+  margin-left: 1.5rem; /* Khoảng cách giữa các link */
+  font-weight: 500; /* Độ đậm chữ link */
+  transition: color 0.3s ease; /* Hiệu ứng chuyển màu */
+}
+
+.nav-link:hover {
+  color: #007bff; /* Màu chữ khi hover */
+}
+
+.styled-footer {
+  background-color: #f8f8f8; /* Màu nền nhạt */
+  padding: 1rem 2rem; /* Khoảng cách lề */
+  text-align: center; /* Căn giữa nội dung */
+  border-top: 1px solid #eee; /* Đường kẻ trên */
+  color: #555; /* Màu chữ */
+  font-size: 0.9rem; /* Kích thước font */
+}
