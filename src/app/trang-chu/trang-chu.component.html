@@ -1,14 +1,15 @@
 <section class="banner">
   <div class="banner-slider">
     <img src="assets/banner1.png" alt="Banner bánh ngọt" class="active">
-    <img src="assets/banner1.png" alt="Banner bánh ngọt 2">
-    <img src="assets/banner1.png" alt="Banner hoa">
-    <img src="assets/banner1.png" alt="Banner hoa 2">
+    <img src="assets/banner4.jpg" alt="Banner bánh ngọt 2">
+    <img src="assets/banner2.jpg" alt="Banner hoa">
+    <img src="assets/banner3.jpg" alt="Banner hoa 2">
   </div>
   <div class="banner-controls">
-    <button class="prev-btn">Previous</button>
-    <button class="next-btn">Next</button>
+    <button class="prev-btn" (click)="prevSlide()">&lt;</button>
+    <button class="next-btn" (click)="nextSlide()">&gt;</button>
   </div>
+  <div class="banner-caption">welcom to 紅艶の屋, we have cake and flower</div>
 </section>
 <section class="featured-products">
   <h2>Sản phẩm nổi bật</h2>

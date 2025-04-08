@@ -99,3 +99,15 @@ footer {
   padding: 10px;
   background-color: #f0f0f0;
 }
+
+.banner-caption {
+  position: absolute; /* Đặt caption lên trên banner */
+  bottom: 20px; /* Cách đáy banner 20px */
+  left: 20px; /* Cách lề trái banner 20px */
+  background: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+  color: white; /* Màu chữ trắng */
+  padding: 10px 15px; /* Khoảng cách bên trong */
+  border-radius: 5px; /* Bo góc */
+  font-size: 1.2em; /* Kích thước chữ */
+  z-index: 10; /* Đảm bảo caption ở trên các phần tử khác */
+}

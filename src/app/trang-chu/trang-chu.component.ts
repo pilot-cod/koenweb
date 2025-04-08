@@ -1,23 +1,46 @@
-import { Component, OnInit, ElementRef, ViewChild, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Renderer2, AfterViewInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-trang-chu',
   templateUrl: './trang-chu.component.html',
   styleUrls: ['./trang-chu.component.css']
 })
-export class TrangChuComponent implements OnInit, AfterViewInit {
-  @ViewChild('.banner-slider') bannerSlider!: ElementRef; // Thêm dấu !
-  images: string[] = ['assets/banner1.png', 'assets/banner1.png', 'assets/banner1.png', 'assets/banner1.png'];
+export class TrangChuComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('.banner-slider') bannerSlider!: ElementRef;
+  images: HTMLImageElement[] = []; // Lưu trữ danh sách các thẻ img
   currentIndex: number = 0;
+  intervalId: any; // Để lưu trữ ID của interval
 
   constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    // Không gọi showImage ở đây nữa
+    // Không cần làm gì ở đây
   }
 
   ngAfterViewInit(): void {
-    this.showImage(this.currentIndex); // Gọi showImage sau khi view được khởi tạo
+    if (this.bannerSlider && this.bannerSlider.nativeElement) {
+      this.images = Array.from(this.bannerSlider.nativeElement.querySelectorAll('img'));
+      this.showImage(this.currentIndex); // Hiển thị ảnh đầu tiên khi component được khởi tạo
+      this.startAutoSlide(); // Bắt đầu tự động chuyển ảnh
+    } else {
+      console.error('Error: .banner-slider element not found in the template.');
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.stopAutoSlide(); // Dừng tự động chuyển ảnh khi component bị hủy
+  }
+
+  startAutoSlide(): void {
+    this.intervalId = setInterval(() => {
+      this.nextSlide();
+    }, 3000); // Đổi ảnh sau mỗi 3 giây (3000 milliseconds) - bạn có thể điều chỉnh giá trị này
+  }
+
+  stopAutoSlide(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
   nextSlide(): void {
@@ -31,16 +54,7 @@ export class TrangChuComponent implements OnInit, AfterViewInit {
   }
 
   showImage(index: number): void {
-    if (this.bannerSlider && this.bannerSlider.nativeElement) { // Kiểm tra để chắc chắn
-      const slider = this.bannerSlider.nativeElement as HTMLElement;
-      const images = slider.querySelectorAll('img') as NodeListOf<HTMLImageElement>;
-      images.forEach((img: HTMLImageElement) => this.renderer.removeClass(img, 'active'));
-      this.renderer.addClass(images[index], 'active');
-      // Nếu bạn muốn sử dụng translate để tạo hiệu ứng trượt mượt mà hơn:
-      // const translateX = -index * 100 + '%';
-      // this.renderer.setStyle(slider, 'transform', `translateX(${translateX})`);
-    } else {
-      console.error('Error: .banner-slider element not found in the template.');
-    }
+    this.images.forEach(img => this.renderer.removeClass(img, 'active')); // Loại bỏ class 'active' khỏi tất cả ảnh
+    this.renderer.addClass(this.images[index], 'active'); // Thêm class 'active' vào ảnh hiện tại
   }
 }
