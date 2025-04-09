@@ -111,3 +111,33 @@ footer {
   font-size: 1.2em; /* Kích thước chữ */
   z-index: 10; /* Đảm bảo caption ở trên các phần tử khác */
 }
+
+/* trang-chu.component.css hoặc styles.css */
+
+.product-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch; /* Để các product có chiều cao bằng nhau */
+}
+
+.product {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product img {
+  width: 100%; /* Để ảnh lấp đầy chiều rộng của container sản phẩm */
+  height: 200px; /* Đặt chiều cao mong muốn (ví dụ: 200px) */
+  object-fit: cover; /* Để ảnh lấp đầy khung và có thể bị cắt */
+}
+
+.product h3 {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.product button {
+  margin-top: 10px;
+}
