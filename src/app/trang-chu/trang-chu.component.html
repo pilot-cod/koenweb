@@ -1,9 +1,9 @@
 <section class="banner">
   <div class="banner-slider">
-    <img src="assets/banner1.png" alt="Banner bánh ngọt" class="active">
-    <img src="assets/banner4.jpg" alt="Banner bánh ngọt 2">
-    <img src="assets/banner2.jpg" alt="Banner hoa">
-    <img src="assets/banner3.jpg" alt="Banner hoa 2">
+    <img *ngFor="let imageUrl of imageUrls; let i = index"
+         [src]="imageUrl"
+         alt="Banner {{ i + 1 }}"
+         [class.active]="i === currentIndex">
   </div>
   <div class="banner-controls">
     <button class="prev-btn" (click)="prevSlide()">&lt;</button>
