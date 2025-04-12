@@ -37,3 +37,17 @@
   color: #555; /* Màu chữ */
   font-size: 0.9rem; /* Kích thước font */
 }
+
+/* app.component.css hoặc styles.css */
+.logo img {
+  height: 50px; /* Điều chỉnh chiều cao logo */
+  /* Bạn có thể thêm width nếu muốn kích thước cố định */
+  /* width: 150px; */
+  vertical-align: middle; /* Căn giữa logo theo chiều dọc với chữ (nếu có) */
+}
+
+.logo {
+  display: flex; /* Để dễ dàng căn chỉnh nội dung bên trong */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  /* Thêm padding hoặc margin nếu cần */
+}

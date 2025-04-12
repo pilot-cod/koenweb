@@ -13,6 +13,8 @@ export class TrangChuComponent implements OnInit, AfterViewInit, OnDestroy {
   imageUrls: string[] = [
     'assets/banner1.png',
     'assets/banner4.jpg',
+    'assets/hoa.jpg',
+    'assets/hoa2.jpg'
   ];
   images: HTMLImageElement[] = [];
   currentIndex: number = 0;
