@@ -1,0 +1,33 @@
+<div class="product-list-container">
+  <h2>Danh Sách Sản Phẩm</h2>
+
+  <div *ngIf="loading" class="loading">Đang tải sản phẩm...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="product-list" *ngIf="danhSachSanPham.length > 0 && !loading && !error">
+    <div *ngFor="let sanPham of danhSachSanPham" class="product">
+      <img [src]="sanPham.imageUrl" [alt]="sanPham.tenSanPham">
+      <h3>{{ sanPham.tenSanPham }}</h3>
+      <p class="product-price">{{ sanPham.gia | currency:'VND':'symbol':'1.0-0' }}</p>
+      <button (click)="xemChiTiet(sanPham)" class="view-details-button">Xem Chi Tiết</button>
+    </div>
+  </div>
+
+  <div *ngIf="danhSachSanPham.length === 0 && !loading && !error" class="empty-list">
+    Không có sản phẩm nào.
+  </div>
+
+  <div *ngIf="selectedSanPham" class="product-details-overlay">
+    <div class="product-details">
+      <h3>{{ selectedSanPham.tenSanPham }}</h3>
+      <div class="product-image">
+        <img [src]="selectedSanPham.imageUrl" [alt]="selectedSanPham.tenSanPham">
+      </div>
+      <p class="product-price">Giá: {{ selectedSanPham.gia | currency:'VND':'symbol':'1.0-0' }}</p>
+      <p class="product-description">{{ selectedSanPham.moTa }}</p>
+      <p>Mã sản phẩm: {{ selectedSanPham.maSanPham }}</p>
+      <p>Số lượng còn lại: {{ selectedSanPham.soLuong }}</p>
+      <button (click)="dongChiTiet()" class="close-details-button">Đóng</button>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@
     <span class="logo-caption">紅艶の屋</span>
   </div>
   <nav class="main-nav">
-    <a routerLink="/" class="nav-link">Trang chủ</a>
+    <a routerLink="/" [queryParams]="{ reload: getCurrentTimestamp() }" class="nav-link">Trang chủ</a>
     <a routerLink="/san-pham" class="nav-link">Sản phẩm</a>
     <a routerLink="/dang-nhap" class="nav-link">Đăng nhập</a>
     <a routerLink="/dang-ky" class="nav-link">Đăng ký</a>

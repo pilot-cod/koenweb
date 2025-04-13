@@ -1,0 +1,68 @@
+<form class="registration-form" (ngSubmit)="onSubmit()">
+  <h2>Đăng Ký Tài Khoản</h2>
+
+  <div class="form-group">
+    <label for="fullName">Họ và Tên:</label>
+    <input type="text" id="fullName" name="fullName" required [(ngModel)]="formData.fullName">
+  </div>
+
+  <div class="form-group">
+    <label for="username">Tên đăng nhập:</label>
+    <input type="text" id="username" name="username" required [(ngModel)]="formData.username">
+    <div class="error-message" *ngIf="usernameError">{{ usernameError }}</div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Địa chỉ Email:</label>
+    <input type="email" id="email" name="email" required [(ngModel)]="formData.email">
+    <div class="error-message" *ngIf="emailError">{{ emailError }}</div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Mật khẩu:</label>
+    <input type="password" id="password" name="password" required [(ngModel)]="formData.password">
+    <div class="password-requirements">
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="confirmPassword">Xác nhận Mật khẩu:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required [(ngModel)]="formData.confirmPassword">
+    <div class="error-message" *ngIf="passwordMatchError">{{ passwordMatchError }}</div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Số điện thoại (tùy chọn):</label>
+    <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone">
+  </div>
+
+  <div class="form-group">
+    <label for="address">Địa chỉ (tùy chọn):</label>
+    <textarea id="address" name="address" [(ngModel)]="formData.address"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="birthDate">Ngày sinh (tùy chọn):</label>
+    <input type="date" id="birthDate" name="birthDate" [(ngModel)]="formData.birthDate">
+  </div>
+
+  <div class="form-group">
+    <label>Giới tính (tùy chọn):</label>
+    <label><input type="radio" name="gender" value="male" [(ngModel)]="formData.gender"> Nam</label>
+    <label><input type="radio" name="gender" value="female" [(ngModel)]="formData.gender"> Nữ</label>
+    <label><input type="radio" name="gender" value="other" [(ngModel)]="formData.gender"> Khác</label>
+  </div>
+
+  <div class="form-group terms-and-conditions">
+    <label>
+      <input type="checkbox" name="terms" required [(ngModel)]="formData.terms">
+      Tôi đồng ý với <a href="/terms">Điều khoản và Điều kiện</a>
+    </label>
+    <div class="error-message" *ngIf="termsError">{{ termsError }}</div>
+  </div>
+
+  <button type="submit" class="submit-button" [disabled]="!registrationForm.valid">Đăng Ký</button>
+
+  <div class="success-message" *ngIf="registrationSuccess">{{ successMessage }}</div>
+  <div class="error-message" *ngIf="registrationError">{{ registrationError }}</div>
+</form>
