@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RegistrationData, RegistrationResponse, ErrorResponse } from './dang-ky/dang-ky.interface'; // Tạo file interfaces riêng (bước 3)
+import { RegistrationData, RegistrationResponse, ErrorResponse } from './dang-ky/dang-ky.interface'; // Đảm bảo đường dẫn đúng
 
 @Injectable({
   providedIn: 'root',
 })
 export class RegistrationService {
-  private registrationUrl = 'YOUR_BACKEND_API_URL/register'; // Thay thế bằng URL thực tế
-  private checkUsernameUrl = 'YOUR_BACKEND_API_URL/check-username'; // Thay thế bằng URL thực tế
-  private checkEmailUrl = 'YOUR_BACKEND_API_URL/check-email'; // Thay thế bằng URL thực tế
+  private apiUrl = 'http://localhost:5000/api/Register'; // Đường dẫn chung đến controller đăng ký
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +17,7 @@ export class RegistrationService {
    * @returns Observable chứa response từ backend (thành công hoặc lỗi).
    */
   registerUser(userData: RegistrationData): Observable<RegistrationResponse | ErrorResponse> {
-    return this.http.post<RegistrationResponse | ErrorResponse>(this.registrationUrl, userData);
+    return this.http.post<RegistrationResponse | ErrorResponse>(`${this.apiUrl}/register`, userData);
   }
 
   /**
@@ -28,8 +26,7 @@ export class RegistrationService {
    * @returns Observable chứa true nếu khả dụng, false nếu không.
    */
   checkUsernameAvailability(username: string): Observable<boolean> {
-    const params = { username: username };
-    return this.http.get<boolean>(this.checkUsernameUrl, { params });
+    return this.http.post<boolean>(`${this.apiUrl}/checkUsernameAvailability`, { username });
   }
 
   /**
@@ -38,7 +35,6 @@ export class RegistrationService {
    * @returns Observable chứa true nếu khả dụng, false nếu không.
    */
   checkEmailAvailability(email: string): Observable<boolean> {
-    const params = { email: email };
-    return this.http.get<boolean>(this.checkEmailUrl, { params });
+    return this.http.post<boolean>(`${this.apiUrl}/checkEmailAvailability`, { email });
   }
 }

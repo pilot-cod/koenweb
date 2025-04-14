@@ -7,7 +7,7 @@ import { SanPham } from './san-pham/san-pham.interface';
   providedIn: 'root'
 })
 export class SanphamService {
-  private apiUrl = '/api/san-phams'; // Thay thế bằng API endpoint thực tế của bạn
+  private apiUrl = 'http://localhost:5000/api/SanPhams'; // Thay thế bằng API endpoint thực tế của bạn
 
   constructor(private http: HttpClient) { }
 
