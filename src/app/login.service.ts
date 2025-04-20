@@ -16,7 +16,7 @@ interface LoginData {
   providedIn: 'root'
 })
 export class LoginService {
-  private loginUrl = '/api/auth/login'; // Thay thế bằng API endpoint thực tế của bạn
+  private loginUrl = '/api/login'; // Thay thế bằng API endpoint thực tế của bạn
 
   constructor(private http: HttpClient) { }
 
